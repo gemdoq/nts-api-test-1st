@@ -19,6 +19,8 @@ bin/
 
 ### IntelliJ IDEA ###
 .idea
+*.env.json
+*.env
 *.iws
 *.iml
 *.ipr
@@ -35,3 +37,4 @@ out/
 
 ### VS Code ###
 .vscode/
+/dev.env
