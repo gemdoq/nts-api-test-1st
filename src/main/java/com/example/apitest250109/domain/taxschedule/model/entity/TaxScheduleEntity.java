@@ -1,14 +1,12 @@
 package com.example.apitest250109.domain.taxschedule.model.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
 @Data
-public class TaxSchedule {
+@Table(name = "tb_tax_schedule")
+public class TaxScheduleEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
