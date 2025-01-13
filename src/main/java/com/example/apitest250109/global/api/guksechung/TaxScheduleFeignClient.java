@@ -1,4 +1,4 @@
-package com.example.apitest250109.global.api;
+package com.example.apitest250109.global.api.guksechung;
 
 import com.example.apitest250109.domain.taxschedule.model.dto.TaxScheduleResponse;
 import org.springframework.cloud.openfeign.FeignClient;
