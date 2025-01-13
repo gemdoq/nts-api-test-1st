@@ -1,0 +1,7 @@
+### 파라미터 없이 기본값으로 요청
+GET http://localhost:8080/tax-schedule/fetch-and-save
+Accept: */*
+
+### 파라미터를 포함한 요청
+GET http://localhost:8080/tax-schedule/fetch-and-save?urlBase=https://custom-api-url.com&perPage=100&page=2
+Accept: */*
