@@ -1,7 +1,6 @@
-package com.example.apitest250109.global.api;
+package com.example.apitest250109.global.api.guksechung;
 
 import com.example.apitest250109.domain.taxschedule.model.dto.TaxScheduleResponse;
-import com.example.apitest250109.global.api.guksechung.TaxScheduleFeignClient;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Value;
