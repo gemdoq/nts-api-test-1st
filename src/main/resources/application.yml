@@ -1,1 +1,10 @@
-spring.application.name=apiTest250109
+spring:
+  datasource:
+    url: ${DB_URL}/${DB_NAME}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    open-in-view: false
