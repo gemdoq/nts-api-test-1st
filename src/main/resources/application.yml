@@ -8,3 +8,16 @@ spring:
       ddl-auto: create
     show-sql: true
     open-in-view: false
+api:
+  guksechung:
+    base-url: "https://api.odcloud.kr"
+    taxSchedule:
+      endpoint: "/api/15101035/v1/uddi:96ecf8a2-e75f-4b31-be60-ccab443b8a07"
+      page: 1
+      per-page: 1000
+      return-type: "json"
+    socialInsurancePaymentDeadline:
+      endpoint: "/api/15120938/v1/uddi:8833d618-c0d3-49c8-9aa1-e526ba59700a"
+      page: 1
+      per-page: 1000
+      return-type: "json"

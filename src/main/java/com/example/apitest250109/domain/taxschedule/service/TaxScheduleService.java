@@ -13,10 +13,10 @@ public class TaxScheduleService {
 	private final TaxScheduleFeignClient feignClient;
 	private final TaxScheduleRepository repository;
 
-	@Value("${TAX_SCHEDULE_API_RETURN_TYPE}")
+	@Value("${api.guksechung.taxSchedule.return-type}")
 	private String defaultReturnType;
 
-	@Value("${TAX_SCHEDULE_API_SERVICE_KEY}")
+	@Value("${GUKSECHUNG_API_SERVICE_KEY}")
 	private String defaultServiceKey;
 
 	public TaxScheduleService(TaxScheduleFeignClient feignClient, TaxScheduleRepository repository) {
@@ -24,7 +24,7 @@ public class TaxScheduleService {
 		this.repository = repository;
 	}
 
-	public void fetchAndSaveSchedules(String baseUrl, int page, int perPage) {
+	public void fetchAndSaveSchedules(int page, int perPage) {
 		try {
 			// FeignClient를 통해 API 호출
 			TaxScheduleResponse response = feignClient.getTaxSchedules(

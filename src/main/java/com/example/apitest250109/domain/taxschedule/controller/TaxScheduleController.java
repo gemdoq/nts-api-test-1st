@@ -13,13 +13,10 @@ public class TaxScheduleController {
 
 	private final TaxScheduleService service;
 
-	@Value("${TAX_SCHEDULE_API_URL_BASE}")
-	private String defaultBaseUrl;
-
-	@Value("${TAX_SCHEDULE_API_PAGE}")
+	@Value("${api.guksechung.taxSchedule.page}")
 	private int defaultPage;
 
-	@Value("${TAX_SCHEDULE_API_PER_PAGE}")
+	@Value("${api.guksechung.taxSchedule.per-page}")
 	private int defaultPerPage;
 
 	public TaxScheduleController(TaxScheduleService service) {
@@ -28,16 +25,14 @@ public class TaxScheduleController {
 
 	@GetMapping("/fetch-and-save")
 	public String fetchAndSaveSchedules(
-			@RequestParam(value = "urlBase", required = false) String baseUrl,
 			@RequestParam(value = "page", required = false) Integer page,
 			@RequestParam(value = "perPage", required = false) Integer perPage
 	) {
 		try {
-			String finalBaseUrl = (baseUrl != null) ? baseUrl : defaultBaseUrl;
 			int finalPage = (page != null) ? page : defaultPage;
 			int finalPerPage = (perPage != null) ? perPage : defaultPerPage;
 
-			service.fetchAndSaveSchedules(finalBaseUrl, finalPage, finalPerPage);
+			service.fetchAndSaveSchedules(finalPage, finalPerPage);
 			return "데이터 저장 성공!";
 		} catch (Exception e) {
 			return "에러 발생: " + e.getMessage();
