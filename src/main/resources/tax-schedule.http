@@ -1,2 +1,0 @@
-### 파라미터 없이 기본값으로 요청
-GET http://127.0.0.1:8080/tax-schedule/fetch-and-save

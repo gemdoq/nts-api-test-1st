@@ -1,0 +1,6 @@
+### 세무일정 응답데이터 저장
+GET http://127.0.0.1:8080/tax-schedule/fetch-and-save
+
+
+### 4대보험납입마감일 응답데이터 저장
+GET http://127.0.0.1:8080/social-insurance-payment-deadline/fetch-and-save
