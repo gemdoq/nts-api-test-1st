@@ -8,6 +8,12 @@ spring:
       ddl-auto: create
     show-sql: true
     open-in-view: false
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 100  # 한 번에 처리하는 레코드 수
+        order_inserts: true  # 삽입 순서 최적화
+        order_updates: true  # 수정 순서 최적화
 api:
   guksechung:
     base-url: "https://api.odcloud.kr"
