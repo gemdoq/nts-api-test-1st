@@ -6,8 +6,13 @@ import com.example.apitest250109.domain.taxschedule.repository.TaxScheduleReposi
 import com.example.apitest250109.global.api.guksechung.TaxScheduleFeignClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
+@Transactional
 public class TaxScheduleService {
 
 	private final TaxScheduleFeignClient feignClient;
@@ -31,22 +36,20 @@ public class TaxScheduleService {
 					page, perPage, defaultReturnType, defaultServiceKey
 			);
 
-			if (response == null) {
-				throw new RuntimeException("API 호출 결과 응답이 null입니다.");
+			if (response == null || response.getData() == null || response.getData().isEmpty()) {
+				throw new RuntimeException("API 호출 결과가 유효하지 않습니다.");
 			}
 
-			if (response.getData() == null || response.getData().isEmpty()) {
-				throw new RuntimeException("API 호출 결과 데이터가 비어있습니다.");
-			}
-
-			// 응답 데이터 저장
-			response.getData().forEach(dataItem -> {
-				TaxScheduleEntity taxScheduleEntity = new TaxScheduleEntity();
-				taxScheduleEntity.setTaxScheduleDate(dataItem.getScheduleDate());
-				taxScheduleEntity.setTaxContent(dataItem.getTaxContent());
-				taxScheduleEntity.setRemark(dataItem.getRemark());
-				repository.save(taxScheduleEntity);
-			});
+			List<TaxScheduleEntity> entities = response.getData().stream()
+					.map(dataItem -> {
+						TaxScheduleEntity entity = new TaxScheduleEntity();
+						entity.setTaxScheduleDate(dataItem.getScheduleDate());
+						entity.setTaxContent(dataItem.getTaxContent());
+						entity.setRemark(dataItem.getRemark());
+						return entity;
+					})
+					.collect(Collectors.toList());
+			repository.saveAll(entities);
 		} catch (Exception e) {
 			throw new RuntimeException("API 호출 및 데이터 저장 중 오류 발생: " + e.getMessage(), e);
 		}

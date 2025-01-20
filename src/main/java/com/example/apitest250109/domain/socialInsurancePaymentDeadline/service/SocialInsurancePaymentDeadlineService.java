@@ -6,8 +6,13 @@ import com.example.apitest250109.domain.socialInsurancePaymentDeadline.repositor
 import com.example.apitest250109.global.api.guksechung.SocialInsurancePaymentDeadlineFeignClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
+@Transactional
 public class SocialInsurancePaymentDeadlineService {
 
 	private final SocialInsurancePaymentDeadlineFeignClient feignClient;
@@ -31,22 +36,20 @@ public class SocialInsurancePaymentDeadlineService {
 					page, perPage, defaultReturnType, defaultServiceKey
 			);
 
-			if (response == null) {
-				throw new RuntimeException("API 호출 결과 응답이 null입니다.");
+			if (response == null || response.getData() == null || response.getData().isEmpty()) {
+				throw new RuntimeException("API 호출 결과가 유효하지 않습니다.");
 			}
 
-			if (response.getData() == null || response.getData().isEmpty()) {
-				throw new RuntimeException("API 호출 결과 데이터가 비어있습니다.");
-			}
-
-			// 응답 데이터 저장
-			response.getData().forEach(dataItem -> {
-				SocialInsurancePaymentDeadlineEntity deadlineEntity = new SocialInsurancePaymentDeadlineEntity();
-				deadlineEntity.setNoticeYearMonth(dataItem.getNoticeYearMonth());
-				deadlineEntity.setPaymentDeadline(dataItem.getPaymentDeadline());
-				deadlineEntity.setHolidayDeadline(dataItem.getHolidayDeadline());
-				repository.save(deadlineEntity);
-			});
+			List<SocialInsurancePaymentDeadlineEntity> entities = response.getData().stream()
+					.map(dataItem -> {
+						SocialInsurancePaymentDeadlineEntity entity = new SocialInsurancePaymentDeadlineEntity();
+						entity.setNoticeYearMonth(dataItem.getNoticeYearMonth());
+						entity.setPaymentDeadline(dataItem.getPaymentDeadline());
+						entity.setHolidayDeadline(dataItem.getHolidayDeadline());
+						return entity;
+					})
+					.collect(Collectors.toList());
+			repository.saveAll(entities);
 		} catch (Exception e) {
 			throw new RuntimeException("API 호출 및 데이터 저장 중 오류 발생: " + e.getMessage(), e);
 		}
