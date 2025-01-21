@@ -22,7 +22,7 @@ public class SocialInsurancePaymentDeadlineResponse {
 		@JsonProperty("납부마감일")
 		private String paymentDeadline;
 
-		@JsonProperty("공휴일 납부마감일")
+		@JsonProperty("공휴일납부마감일")
 		private String holidayDeadline;
 	}
 

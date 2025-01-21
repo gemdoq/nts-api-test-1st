@@ -14,5 +14,5 @@ public class SocialInsurancePaymentDeadlineEntity {
 
 	private String noticeYearMonth;  // 고지년월
 	private String paymentDeadline; // 납부마감일
-	private String holidayDeadline;   // 공휴일 납부마감일
+	private String holidayDeadline;   // 공휴일납부마감일
 }
