@@ -15,7 +15,7 @@ spring:
         order_inserts: true  # 삽입 순서 최적화
         order_updates: true  # 수정 순서 최적화
 api:
-  guksechung:
+  publicdata:
     base-url: "https://api.odcloud.kr"
     taxSchedule:
       endpoint: "/api/15101035/v1/uddi:96ecf8a2-e75f-4b31-be60-ccab443b8a07"
