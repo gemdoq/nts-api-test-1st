@@ -13,10 +13,10 @@ public class SocialInsurancePaymentDeadlineController {
 
 	private final SocialInsurancePaymentDeadlineService service;
 
-	@Value("${api.guksechung.socialInsurancePaymentDeadline.page}")
+	@Value("${api.publicdata.socialInsurancePaymentDeadline.page}")
 	private int defaultPage;
 
-	@Value("${api.guksechung.socialInsurancePaymentDeadline.per-page}")
+	@Value("${api.publicdata.socialInsurancePaymentDeadline.per-page}")
 	private int defaultPerPage;
 
 	public SocialInsurancePaymentDeadlineController(SocialInsurancePaymentDeadlineService service) {

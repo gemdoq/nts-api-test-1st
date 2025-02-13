@@ -1,4 +1,4 @@
-package com.example.apitest250109.global.api.guksechung;
+package com.example.apitest250109.global.api.publicdata;
 
 import com.example.apitest250109.domain.socialInsurancePaymentDeadline.model.dto.SocialInsurancePaymentDeadlineResponse;
 import org.junit.jupiter.api.Test;

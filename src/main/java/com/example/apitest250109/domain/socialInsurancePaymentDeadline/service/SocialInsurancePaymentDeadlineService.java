@@ -3,7 +3,7 @@ package com.example.apitest250109.domain.socialInsurancePaymentDeadline.service;
 import com.example.apitest250109.domain.socialInsurancePaymentDeadline.model.dto.SocialInsurancePaymentDeadlineResponse;
 import com.example.apitest250109.domain.socialInsurancePaymentDeadline.model.entity.SocialInsurancePaymentDeadlineEntity;
 import com.example.apitest250109.domain.socialInsurancePaymentDeadline.repository.SocialInsurancePaymentDeadlineRepository;
-import com.example.apitest250109.global.api.guksechung.SocialInsurancePaymentDeadlineFeignClient;
+import com.example.apitest250109.global.api.publicdata.SocialInsurancePaymentDeadlineFeignClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,10 +18,10 @@ public class SocialInsurancePaymentDeadlineService {
 	private final SocialInsurancePaymentDeadlineFeignClient feignClient;
 	private final SocialInsurancePaymentDeadlineRepository repository;
 
-	@Value("${api.guksechung.socialInsurancePaymentDeadline.return-type}")
+	@Value("${api.publicdata.socialInsurancePaymentDeadline.return-type}")
 	private String defaultReturnType;
 
-	@Value("${GUKSECHUNG_API_SERVICE_KEY}")
+	@Value("${PUBLICDATA_API_SERVICE_KEY}")
 	private String defaultServiceKey;
 
 	public SocialInsurancePaymentDeadlineService(SocialInsurancePaymentDeadlineFeignClient feignClient, SocialInsurancePaymentDeadlineRepository repository) {
