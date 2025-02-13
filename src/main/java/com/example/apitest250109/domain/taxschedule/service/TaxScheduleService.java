@@ -3,7 +3,7 @@ package com.example.apitest250109.domain.taxschedule.service;
 import com.example.apitest250109.domain.taxschedule.model.dto.TaxScheduleResponse;
 import com.example.apitest250109.domain.taxschedule.model.entity.TaxScheduleEntity;
 import com.example.apitest250109.domain.taxschedule.repository.TaxScheduleRepository;
-import com.example.apitest250109.global.api.guksechung.TaxScheduleFeignClient;
+import com.example.apitest250109.global.api.publicdata.TaxScheduleFeignClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,10 +18,10 @@ public class TaxScheduleService {
 	private final TaxScheduleFeignClient feignClient;
 	private final TaxScheduleRepository repository;
 
-	@Value("${api.guksechung.taxSchedule.return-type}")
+	@Value("${api.publicdata.taxSchedule.return-type}")
 	private String defaultReturnType;
 
-	@Value("${GUKSECHUNG_API_SERVICE_KEY}")
+	@Value("${PUBLICDATA_API_SERVICE_KEY}")
 	private String defaultServiceKey;
 
 	public TaxScheduleService(TaxScheduleFeignClient feignClient, TaxScheduleRepository repository) {

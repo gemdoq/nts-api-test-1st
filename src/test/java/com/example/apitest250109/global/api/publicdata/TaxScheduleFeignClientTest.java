@@ -1,4 +1,4 @@
-package com.example.apitest250109.global.api.guksechung;
+package com.example.apitest250109.global.api.publicdata;
 
 import com.example.apitest250109.domain.taxschedule.model.dto.TaxScheduleResponse;
 import org.junit.jupiter.api.Test;

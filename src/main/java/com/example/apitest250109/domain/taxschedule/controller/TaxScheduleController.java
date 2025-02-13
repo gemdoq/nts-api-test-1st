@@ -13,10 +13,10 @@ public class TaxScheduleController {
 
 	private final TaxScheduleService service;
 
-	@Value("${api.guksechung.taxSchedule.page}")
+	@Value("${api.publicdata.taxSchedule.page}")
 	private int defaultPage;
 
-	@Value("${api.guksechung.taxSchedule.per-page}")
+	@Value("${api.publicdata.taxSchedule.per-page}")
 	private int defaultPerPage;
 
 	public TaxScheduleController(TaxScheduleService service) {
