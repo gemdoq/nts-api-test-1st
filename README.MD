@@ -1,8 +1,8 @@
-Tax Schedule API Integration
+API Integration
 
 📖 Overview
 
-This project is designed to interact with the Korea National Tax Service (NTS) public API for retrieving tax schedule information using FeignClient and storing it in a PostgreSQL database.
+This project is designed to interact with the Korea National Tax Service (NTS) public API for retrieving tax information using FeignClient and storing it in a PostgreSQL database.
 
 🛠️ Technologies Used
 •	Language: Java 21
